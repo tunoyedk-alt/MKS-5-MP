@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MKS 5 MP — HTML to APK</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#070b14;color:#fff}
+.app{max-width:1050px;margin:auto;padding:22px}
+header{display:flex;align-items:center;justify-content:space-between;padding:8px 0 22px}
+.logo{display:flex;align-items:center;gap:12px}.mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#6c5ce7,#00c2ff);display:grid;place-items:center;font-size:22px;font-weight:900;box-shadow:0 10px 30px #00c2ff22}
+h1{margin:0;font-size:22px}.sub{color:#8e9ab0;font-size:12px;margin-top:3px}
+.badge{padding:8px 12px;border:1px solid #253047;border-radius:999px;color:#aab7cd;font-size:12px}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.card{background:#0d1320;border:1px solid #202b40;border-radius:20px;padding:20px;box-shadow:0 15px 50px #0004}
+.card h2{font-size:16px;margin:0 0 16px}.drop{border:1.5px dashed #3a4b6a;border-radius:16px;padding:28px 16px;text-align:center;background:#0a101b;cursor:pointer}
+.drop:hover{border-color:#6c5ce7;background:#0d1322}.drop .big{font-size:36px}.drop b{display:block;margin:8px 0 5px}.muted{font-size:12px;color:#7f8da5}
+input[type=file]{display:none}
+label{font-size:12px;color:#aab7cd;display:block;margin:15px 0 7px}
+input[type=text],select{width:100%;background:#080d17;border:1px solid #26334b;color:#fff;border-radius:12px;padding:12px 13px;outline:none}
+input[type=text]:focus,select:focus{border-color:#6c5ce7}
+.iconrow{display:flex;gap:14px;align-items:center}.preview{width:70px;height:70px;border-radius:18px;background:#171f30;border:1px solid #2b3850;display:grid;place-items:center;overflow:hidden;font-size:26px}.preview img{width:100%;height:100%;object-fit:cover}
+.iconbtn{flex:1;padding:12px;border:1px solid #293650;background:#111a29;color:#fff;border-radius:12px;cursor:pointer}
+.perm{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #1c2638}.perm:last-child{border:0}.perm small{display:block;color:#7f8da5;margin-top:3px}
+.switch{position:relative;width:45px;height:25px}.switch input{display:none}.slider{position:absolute;inset:0;background:#29354a;border-radius:20px;cursor:pointer}.slider:before{content:"";position:absolute;width:19px;height:19px;left:3px;top:3px;background:white;border-radius:50%;transition:.2s}.switch input:checked+.slider{background:#6c5ce7}.switch input:checked+.slider:before{transform:translateX(20px)}
+.actions{display:flex;gap:10px;margin-top:18px}.btn{border:0;border-radius:13px;padding:13px 18px;font-weight:700;cursor:pointer}.primary{flex:1;background:linear-gradient(135deg,#6c5ce7,#4d8cff);color:#fff}.secondary{background:#172033;color:#cbd6e8;border:1px solid #293650}
+.status{margin-top:14px;display:none}.bar{height:8px;background:#182235;border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,#6c5ce7,#00c2ff);transition:width .35s}.statusline{display:flex;justify-content:space-between;color:#8e9ab0;font-size:12px;margin:9px 0}
+.result{display:none;margin-top:14px;padding:15px;border:1px solid #28553e;background:#0c1a15;border-radius:13px}.result b{color:#74e0a2}.result button{margin-top:10px;width:100%}
+footer{text-align:center;color:#5f6c82;font-size:11px;margin:20px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.app{padding:14px}.card{padding:16px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="logo"><div class="mark">M5</div><div><h1>MKS 5 MP</h1><div class="sub">HTML → Android APK Builder</div></div></div>
+  <div class="badge">v1.0 Builder</div>
+</header>
+
+<div class="grid">
+<section>
+<div class="card">
+<h2>📄 HTML layihəsi</h2>
+<label class="drop" for="htmlFile" id="drop">
+  <div class="big">📁</div><b id="fileName">HTML faylını seç</b>
+  <span class="muted">.html / .htm faylı əlavə et</span>
+</label>
+<input id="htmlFile" type="file" accept=".html,.htm,text/html">
+
+<label>Tətbiq adı</label>
+<input id="appName" type="text" value="My App" placeholder="Məsələn: UnisonAi">
+
+<label>Package name</label>
+<input id="packageName" type="text" value="com.mks5mp.myapp" placeholder="com.example.myapp">
+
+<label>Version</label>
+<select id="version"><option>1.0</option><option>1.1</option><option>2.0</option><option>3.0</option><option>5.0</option></select>
+
+<label>Version code</label>
+<input id="versionCode" type="text" value="1" inputmode="numeric">
+</div>
+
+<div class="card" style="margin-top:18px">
+<h2>🖼️ Tətbiq ikonu</h2>
+<div class="iconrow">
+ <div class="preview" id="iconPreview">M5</div>
+ <label class="iconbtn" for="iconFile" style="margin:0;text-align:center">İkon seç</label>
+ <input id="iconFile" type="file" accept="image/*">
+</div>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>🔐 İcazələr</h2>
+<div class="perm"><div>🌐 İnternet<small>Web səhifə və API bağlantısı</small></div><label class="switch"><input id="internet" type="checkbox" checked><span class="slider"></span></label></div>
+<div class="perm"><div>🔔 Bildiriş<small>Push/local notifications</small></div><label class="switch"><input id="notify" type="checkbox"><span class="slider"></span></label></div>
+<div class="perm"><div>🎤 Mikrofon<small>Səs funksiyaları üçün</small></div><label class="switch"><input id="mic" type="checkbox"><span class="slider"></span></label></div>
+<div class="perm"><div>📷 Kamera<small>Kamera funksiyaları üçün</small></div><label class="switch"><input id="camera" type="checkbox"><span class="slider"></span></label></div>
+<div class="perm"><div>📂 Fayllar<small>Fayl seçmə/yazma icazəsi</small></div><label class="switch"><input id="files" type="checkbox" checked><span class="slider"></span></label></div>
+
+<div class="actions">
+<button class="btn secondary" onclick="resetForm()">Sıfırla</button>
+<button class="btn primary" onclick="build()">⚡ APK yarat</button>
+</div>
+
+<div class="status" id="status">
+ <div class="statusline"><span id="statusText">Hazırlanır...</span><span id="percent">0%</span></div>
+ <div class="bar"><div class="fill" id="fill"></div></div>
+</div>
+<div class="result" id="result">
+ <b>✓ Layihə hazırlandı</b>
+ <div class="muted" style="margin-top:5px">Bu demo build interfeysidir. Real APK çıxışı üçün Android build backend qoşulmalıdır.</div>
+ <button class="btn secondary" onclick="alert('Real APK build serveri qoşulduqda buradan APK yüklənəcək.')">📦 APK yüklə</button>
+</div>
+</div>
+
+<div class="card" style="margin-top:18px">
+<h2>ℹ️ Layihə xülasəsi</h2>
+<div class="muted" id="summary">HTML faylı seçilməyib.</div>
+</div>
+</section>
+</div>
+<footer>MKS 5 MP • HTML to APK Builder</footer>
+</div>
+
+<script>
+const htmlFile=document.getElementById('htmlFile'), iconFile=document.getElementById('iconFile');
+htmlFile.onchange=()=>{const f=htmlFile.files[0];document.getElementById('fileName').textContent=f?f.name:'HTML faylını seç';updateSummary()};
+iconFile.onchange=()=>{const f=iconFile.files[0];if(!f)return;const u=URL.createObjectURL(f);document.getElementById('iconPreview').innerHTML='<img src="'+u+'">';};
+['appName','packageName','version','versionCode'].forEach(id=>document.getElementById(id).addEventListener('input',updateSummary));
+function updateSummary(){const f=htmlFile.files[0];document.getElementById('summary').textContent=f?`${f.name} • ${document.getElementById('appName').value} • v${document.getElementById('version').value}`:'HTML faylı seçilməyib.'}
+function resetForm(){location.reload()}
+function build(){
+ if(!htmlFile.files[0]){alert('Əvvəlcə HTML faylını seç.');return}
+ const status=document.getElementById('status'),fill=document.getElementById('fill'),pct=document.getElementById('percent'),txt=document.getElementById('statusText'),res=document.getElementById('result');
+ status.style.display='block';res.style.display='none';let p=0;
+ const steps=['HTML yoxlanılır...','Android layihəsi hazırlanır...','Manifest yaradılır...','İkon əlavə olunur...','İcazələr tətbiq olunur...','Build hazırlanır...'];
+ const timer=setInterval(()=>{p+=10;fill.style.width=p+'%';pct.textContent=p+'%';txt.textContent=steps[Math.min(steps.length-1,Math.floor(p/20))];if(p>=100){clearInterval(timer);txt.textContent='Hazırdır';res.style.display='block'}},180);
+}
+</script>
+</body>
+</html>
