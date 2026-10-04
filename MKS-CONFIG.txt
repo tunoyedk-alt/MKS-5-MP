@@ -1,0 +1,13 @@
+MKS 5 MP REAL APK BUILDER
+=========================
+Place the HTML you want to convert at:
+app/src/main/assets/index.html
+
+Set these Gradle properties when building:
+-PAPP_NAME="Your App"
+-PAPP_ID="com.example.yourapp"
+-PAPP_VERSION="1.0"
+-PAPP_VERSION_CODE="1"
+
+GitHub Actions will build app-debug.apk and upload it as a workflow artifact.
+This is a real APK build; the current web UI is not yet wired to dynamically submit arbitrary files.
